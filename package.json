@@ -26,7 +26,10 @@
     "ionic-native": "^2.2.3",
     "ionicons": "^3.0.0",
     "rxjs": "5.0.0-beta.12",
-    "zone.js": "^0.6.21"
+    "zone.js": "^0.6.21",
+    "express": "^4.13.4",
+    "cors": "^2.7.1",
+    "body-parser": "^1.15.1"
   },
   "devDependencies": {
     "@ionic/app-scripts": "^0.0.36",
