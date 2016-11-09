@@ -2,6 +2,7 @@
   "name": "do-until",
   "author": "akistfs@outlook.com",
   "private": false,
+  "main": "server.js",
   "scripts": {
     "build": "ionic-app-scripts build",
     "watch": "ionic-app-scripts watch",
@@ -9,7 +10,8 @@
     "emulate:before": "build",
     "deploy:before": "build",
     "build:before": "build",
-    "run:before": "build"
+    "run:before": "build",
+    "start": "node server.js"
   },
   "dependencies": {
     "@angular/common": "^2.0.0",
