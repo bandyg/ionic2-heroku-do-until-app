@@ -1,0 +1,47 @@
+
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <button ion-button (click)="dismiss(todo)">
+                <span>cancel</span>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+
+<ion-content >
+    <ion-list padding>
+        <form #form="ngForm" novalidate>
+            <ion-item class="no-padding">
+                <ion-label stacked>what needs to be done</ion-label>
+                <ion-input required [(ngModel)]="todo.title" name="title" ngControl="title"></ion-input>
+            </ion-item>
+
+
+            <ion-item class="no-padding">
+                <ion-label stacked>do until</ion-label>
+                <ion-datetime displayFormat="MMM DD YYYY" min="2016" max="2100" name="end_date" [(ngModel)]="todo.end_date" ngControl="end_date"></ion-datetime>
+            </ion-item>
+
+            <ion-item class="no-padding">
+                <ion-label stacked>notes</ion-label>
+                <ion-textarea [(ngModel)]="todo.description" name="description" ngControl="description" rows="4"></ion-textarea>
+            </ion-item>
+        </form>
+
+    </ion-list>
+    <ion-item style="margin-top: -16px;">
+        <ion-scroll scrollX="true" style="height: 62px;" >
+            <ion-icon *ngFor="let icon of todoItem.icons_collection; let i = index" name={{icon.icon_name}} (click)="selectIcon(icon, i)"
+            class="font_size_34" [ngClass]="{'danger':icon.selected }" isActive="{{icon.selected}}">
+            </ion-icon>
+        </ion-scroll>
+    </ion-item>
+    
+    <div padding>
+        <button ion-button type="submit" color="primary" block [disabled]="!form.valid" *ngIf="!todo.id" (click)="saveItem(todo)">lets do this</button>
+        <button ion-button type="submit" color="primary" block [disabled]="!form.valid" *ngIf="todo.id" (click)="editItem(todo)">update</button>
+    </div>
+</ion-content>

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title text-center>what's next?</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="home">
+
+<ion-list>
+  <ion-item *ngFor="let item of todos; let i = index" (click)="editTodo(item)">
+    <ion-icon color="primary" name="{{item.icon}}" item-left large></ion-icon>
+    <ion-icon color="primary" name="more" item-right (click)="presentPopover(i, $event)"></ion-icon>
+    <h2>{{item.title}}</h2>
+    <h3>{{item.description}}</h3>
+    <p *ngIf="item.days_left > 0">expires in: {{item.days_left}} days</p>
+    <p *ngIf="item.days_left == 0">expires today</p>
+    <p *ngIf="item.days_left < 0">expired</p>
+  </ion-item>
+</ion-list>
+
+ <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="newTodo()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
