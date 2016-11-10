@@ -10,7 +10,7 @@ import { StorageService} from '../../providers/storage';
 
 export class HomePage {
 
-	public todos;
+	public todos = [];
 	constructor(public navCtrl: NavController, public modalCtrl: ModalController, public storageService: StorageService, public popoverCtrl: PopoverController) {}
 
 	ionViewWillEnter() { 
@@ -22,6 +22,8 @@ export class HomePage {
 	        if (data) {
 	            this.todos = JSON.parse(data);
 	            this.calculateDays();
+	        } else {
+	        	this.todos = [];
 	        }
 	    });
 	}

@@ -83058,6 +83058,7 @@ var HomePage = (function () {
         this.modalCtrl = modalCtrl;
         this.storageService = storageService;
         this.popoverCtrl = popoverCtrl;
+        this.todos = [];
     }
     HomePage.prototype.ionViewWillEnter = function () {
         this.getData();
@@ -83068,6 +83069,9 @@ var HomePage = (function () {
             if (data) {
                 _this.todos = JSON.parse(data);
                 _this.calculateDays();
+            }
+            else {
+                _this.todos = [];
             }
         });
     };
@@ -83113,7 +83117,7 @@ var HomePage = (function () {
         return Math.floor((utc2 - utc1) / 86400000);
     };
     HomePage = __decorate$109([
-        Component({template:/*ion-inline-start:"/home/akis/doUntil/src/pages/home/home.html"*/'<ion-header>\n  <ion-toolbar color="primary">\n    <ion-title text-center>what\'s next?</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding class="home">\n\n<ion-list>\n  <ion-item *ngFor="let item of todos; let i = index" (click)="editTodo(item)">\n    <ion-icon color="primary" name="{{item.icon}}" item-left large></ion-icon>\n    <ion-icon color="primary" name="more" item-right (click)="presentPopover(i, $event)"></ion-icon>\n    <h2>{{item.title}}</h2>\n    <h3>{{item.description}}</h3>\n    <p *ngIf="item.days_left > 0">expires in: {{item.days_left}} days</p>\n    <p *ngIf="item.days_left == 0">expires today</p>\n    <p *ngIf="item.days_left < 0">expired</p>\n  </ion-item>\n</ion-list>\n\n <ion-fab right bottom>\n    <button ion-fab color="primary" (click)="newTodo()">\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/home/akis/doUntil/src/pages/home/home.html"*/
+        Component({template:/*ion-inline-start:"/home/akis/doUntil/src/pages/home/home.html"*/'<ion-header>\n  <ion-toolbar color="primary">\n    <ion-title text-center>what\'s next?</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding class="home">\n\n<ion-list>\n  <ion-item *ngFor="let item of todos; let i = index" (click)="editTodo(item)">\n    <ion-icon color="primary" name="{{item.icon}}" item-left large></ion-icon>\n    <ion-icon color="primary" name="more" item-right (click)="presentPopover(i, $event)"></ion-icon>\n    <h2>{{item.title}}</h2>\n    <h3>{{item.description}}</h3>\n    <p *ngIf="item.days_left > 0">expires in: {{item.days_left}} days</p>\n    <p *ngIf="item.days_left == 0">expires today</p>\n    <p *ngIf="item.days_left < 0">expired</p>\n  </ion-item>\n</ion-list>\n\n <ion-fab right bottom>\n    <button ion-fab color="primary" (click)="newTodo()">\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"/home/akis/doUntil/src/pages/home/home.html"*/
         }), 
         __metadata$2('design:paramtypes', [NavController, ModalController, StorageService, PopoverController])
     ], HomePage);
