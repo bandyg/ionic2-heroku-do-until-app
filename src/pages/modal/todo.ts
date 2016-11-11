@@ -19,7 +19,6 @@ export class Modal {
 		 	end_date: new Date().toISOString(),
 		 	icon: 'alarm'
 		};
-		console.log(this.todo)
 		this.todoItem.setIcon(this.todo);
 	}
 

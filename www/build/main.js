@@ -82984,7 +82984,6 @@ var Modal$1 = (function () {
             end_date: new Date().toISOString(),
             icon: 'alarm'
         };
-        console.log(this.todo);
         this.todoItem.setIcon(this.todo);
     };
     //updates the selected icon
