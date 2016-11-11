@@ -77,7 +77,9 @@ export class TodoItem  {
     //sets the selected icon for a todo item
     setIcon(todo) {
         var icon_index = this.icons_collection.map(function(item) {
-             return item.icon_name; }).indexOf(todo.icon);
+            //reset icon selected
+            item.selected = false;
+            return item.icon_name; }).indexOf(todo.icon);
         var icon_found = this.icons_collection[icon_index];
         icon_found.selected = true;
         this.icons_collection.splice(0, 0, this.icons_collection.splice(icon_index, 1)[0]);
@@ -85,10 +87,10 @@ export class TodoItem  {
 
     //Generates an array of icon objects
     createArray() {
-        var array = [];
-         this.icons.forEach(function(item) {
-            array.push({'icon_name': item, 'selected': false});
+        var icon_array = [];
+        this.icons.forEach(function(item) {
+            icon_array.push({'icon_name': item, 'selected': false});
         }.bind(this));
-        return array;
+        return icon_array;
     }
 }

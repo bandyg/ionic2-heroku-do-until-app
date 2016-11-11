@@ -7,7 +7,9 @@ import { PopoverPage } from '../pages/popover/options';
 import { TodoItem } from '../providers/todo_item';
 import { StorageService } from '../providers/storage';
 import {Storage} from '@ionic/storage';
+import {enableProdMode} from '@angular/core';
 
+enableProdMode();
 @NgModule({
   declarations: [
     MyApp,

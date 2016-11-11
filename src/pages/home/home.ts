@@ -15,7 +15,7 @@ export class HomePage {
 
 	ionViewWillEnter() { 
 		this.getData();        
-    }
+	}
 
 	getData() {
 		this.storageService.getData().then((data) => {

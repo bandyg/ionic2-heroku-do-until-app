@@ -7678,7 +7678,12 @@ var _platform;
  *
  * @stable
  */
-
+function enableProdMode() {
+    if (_runModeLocked) {
+        throw new Error('Cannot enable prod mode after platform setup.');
+    }
+    _devMode = false;
+}
 /**
  * Returns whether Angular is in development mode. After called once,
  * the value is locked and won't change any more.
@@ -82934,6 +82939,8 @@ var TodoItem = (function () {
     //sets the selected icon for a todo item
     TodoItem.prototype.setIcon = function (todo) {
         var icon_index = this.icons_collection.map(function (item) {
+            //reset icon selected
+            item.selected = false;
             return item.icon_name;
         }).indexOf(todo.icon);
         var icon_found = this.icons_collection[icon_index];
@@ -82942,11 +82949,11 @@ var TodoItem = (function () {
     };
     //Generates an array of icon objects
     TodoItem.prototype.createArray = function () {
-        var array = [];
+        var icon_array = [];
         this.icons.forEach(function (item) {
-            array.push({ 'icon_name': item, 'selected': false });
+            icon_array.push({ 'icon_name': item, 'selected': false });
         }.bind(this));
-        return array;
+        return icon_array;
     };
     TodoItem = __decorate$113([
         Injectable(), 
@@ -82977,6 +82984,7 @@ var Modal$1 = (function () {
             end_date: new Date().toISOString(),
             icon: 'alarm'
         };
+        console.log(this.todo);
         this.todoItem.setIcon(this.todo);
     };
     //updates the selected icon
@@ -83160,6 +83168,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+enableProdMode();
 var AppModule = (function () {
     function AppModule() {
     }
